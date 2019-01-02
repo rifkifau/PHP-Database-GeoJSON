@@ -26,15 +26,15 @@
 	<script>
 		var map;
 
-		var mapquestOSM = new L.TileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+		var openstreetmap = new L.TileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
 			maxZoom: 17,
 			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		});
 
-		var mapquestOAM = new L.TileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
+		var esriworldimagery = new L.TileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
 			maxZoom: 17,
-			subdomains: ["oatile1", "oatile2", "oatile3", "oatile4"],
-			attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+			// subdomains: ["oatile1", "oatile2", "oatile3", "oatile4"],
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 		});
 
 		// Bike Racks
@@ -102,12 +102,12 @@
 		});
 
 		map = new L.Map("map",{
-			layers: [mapquestOSM, bikeRacks]
+			layers: [openstreetmap, bikeRacks]
 		});
 
 		var baseLayers = {
-			"MapQuest Streets": mapquestOSM,
-			"MapQuest Aerial": mapquestOAM
+			"OpenStreetMap": openstreetmap,
+			"ESRI World Imagery": esriworldimagery
 		};
 		var overlays = {
 			"Bike Racks": bikeRacks,
